@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use Session;
 
 class AuthController extends Controller
 {
@@ -46,7 +47,7 @@ class AuthController extends Controller
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()
-            ->json(['data' => $user,'access_token' => $token, 'token_type' => 'Bearer', ]);
+            ->json(['success' => true, 'data' => $user,'access_token' => $token, 'token_type' => 'Bearer', ]);
     }
 
     public function login(Request $request)
@@ -68,10 +69,19 @@ class AuthController extends Controller
     // method for user logout and delete token
     public function logout()
     {
-        auth()->user()->tokens()->delete();
+        // auth()->user()->tokens()->delete();
+
+        try {
+            Session::flush();
+            $success = true;
+            $message = 'Successfully logged out';
+        } catch (\Illuminate\Database\QueryException $ex) {
+            $success = false;
+            $message = $ex->getMessage();
+        }
 
         return [
-            'message' => 'You have successfully logged out and the token was successfully deleted'
+            'success' => $success, 'message' => 'You have successfully logged out and the token was successfully deleted'
         ];
     }
 }

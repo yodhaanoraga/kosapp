@@ -11,6 +11,7 @@ KosAPP is a web based application where Kos Owner can be promote their propertie
 * [Kos ShowCase](#kos-showcase)
 * [Credit Recharge](#credit-recharge)
 * [API Reference](#api-reference)
+* [Owner Dashboard](#owner-dashboard)
 
 ***
 
@@ -36,7 +37,7 @@ Please following this steps to complete the installation
 6. Execute migration. Here is the command "php artisan migrate".
 7. Execute "php artisan serve".
 8. Additional, you need to set crontab on your system. First, execute command "php artisan schedule:run". Then, save this routine command at your cron "* * * * * /usr/bin/php7.4 /your-app-installed-path/artisan schedule:run >> /dev/null 2>&1".
-9. The apps is ready. You can access at URL http://127.0.0.:8000/api (ip address and protocol can be replace as domain name, depend on your environment setup).
+9. The apps is ready. You can access using postman at URL http://127.0.0.:8000/api (ip address and protocol can be replace as domain name, depend on your environment setup).
 
 ***
 
@@ -439,6 +440,19 @@ Method GET
     }
 }
 ```
+
+***
+
+## owner-dashboard
+
+Owner Dashboard is an frontend side. It using VUEJS as frontend engine. So, it need to install some additional dependencies. Please follow steps below:
+
+1. Execute "npm i vue@next vue-router@next".
+2. Execute "npm i -D @vue/compiler-sfc vue-loader@next".
+3. Execute "npm i -D @vue/compiler-sfc vue-loader@next".
+4. Execute "npm install --save vue-router".
+5. Then compile it all with execute "npm i && npm run dev".
+6. Finally, execute "npm run watch" and open another terminal then execute "php artisan serve". And you can start by accessing http://127.0.0.1:8000 on web browser.
 
 
 ## License
