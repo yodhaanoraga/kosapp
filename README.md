@@ -30,11 +30,13 @@ Please make sure your environments fit with below requirements
 Please following this steps to complete the installation
 1. Clone from repo https://github.com/yodhaanoraga/kosapp.
 2. Create database, i.e. kosappdb.
-3. Set database credential at .env file.
-4. Execute migration. Here is the command "php artisan migrate".
-5. Execute "php artisan serve".
-6. Additional, you need to set crontab on your system. First, execute command "php artisan schedule:run". Then, save this routine command at your cron "* * * * * /usr/bin/php7.4 /your-app-installed-path/artisan schedule:run >> /dev/null 2>&1".
-7. The apps is ready. You can access at URL http://127.0.0.:8000/api (ip address and protocol can be replace as domain name, depend on your environment setup).
+3. Execute "composer install".
+4. Set database credential at .env file. You can copy from .env.example file.
+5. Execute "php artisan key:generate"
+6. Execute migration. Here is the command "php artisan migrate".
+7. Execute "php artisan serve".
+8. Additional, you need to set crontab on your system. First, execute command "php artisan schedule:run". Then, save this routine command at your cron "* * * * * /usr/bin/php7.4 /your-app-installed-path/artisan schedule:run >> /dev/null 2>&1".
+9. The apps is ready. You can access at URL http://127.0.0.:8000/api (ip address and protocol can be replace as domain name, depend on your environment setup).
 
 ***
 
